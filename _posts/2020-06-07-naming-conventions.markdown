@@ -1,6 +1,6 @@
 ---
 title:  "Nazwy zmiennych, notacje i konwencje nazewnicze"
-date:   2020-06-07 22:00:00 +0200
+date:   2020-06-07 22:30:00 +0200
 categories: code-for-humans
 ---
 
