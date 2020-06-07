@@ -39,6 +39,9 @@ plugins:
   - jekyll-remote-theme
   - jekyll-include-cache # required by minimal-mistakes theme
 
+search: true
+search_provider: lunr # Google Search + SEO or algolia is better alternative https://mmistakes.github.io/minimal-mistakes/docs/configuration/#algolia
+
 comments:
   provider: "disqus"
   disqus:
@@ -50,7 +53,10 @@ defaults:
       path: ""
       type: posts
     values:
+      layout: single
       comments: true
+      share: true
+      related: true
 
 # Exclude from processing.
 # The following items will not be processed, by default.
@@ -80,3 +86,9 @@ kramdown:
   math_engine: mathjax
   syntax_highlighter: rouge
   
+# HTML Compression
+# - http://jch.penibelst.de/
+compress_html:
+  clippings: all
+  ignore:
+    envs: development
