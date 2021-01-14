@@ -1,5 +1,5 @@
 ---
-title:  "Pokaż mi że kod działa - Tests-First Development"
+title:  "Pokaż mi, że kod działa - Tests First Development"
 date:   2021-01-14 11:00:00 +0200
 categories: quality
 ---
