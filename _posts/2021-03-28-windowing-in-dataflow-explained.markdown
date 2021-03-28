@@ -25,22 +25,22 @@ Książka 1 wydarzyła się w programie jako pierwsza, więc oznaczymy ją jako 
 Model “Dataflow” pozwala porcjować dane, które mają być przetwarzane wspólnie, tylko w przestrzeni czasu. Można np. określić, że jedną porcją danych są dane, które wystąpiły w 10 sekundowym **oknie czasowym**, ale nie można określić, że przetwarzane porcje mają mieć N elementów. Można natomiast zdefiniować własną przestrzeń czasu! Dokładnie to zrobiliśmy w naszym przykładzie. Książka 1 wystąpiła w “czasie” 1, a książka 2 w “czasie” 2. Żeby przetworzyć je w osobnych porcjach, wystarczy przypisać książki do okien czasowych o rozmiarze <1.
 
 <style>
-r { color: red }
-g { color: green }
-b { color: blue }
+code { font-family: monospace }
+r { color: red; font-weight: bold; font-family: monospace }
+g { color: green; font-weight: bold; font-family: monospace }
+b { color: blue; font-weight: bold; font-family: monospace }
 </style>
 
-W tym momencie, z punktu widzenia modelu *Dataflow* nasze dane są przetwarzane w postaci trójwartościowych krotek typu (<r>**value**</r>, <g>**event-time**</g>, <b>**window**</b>):
+W tym momencie, z punktu widzenia modelu *Dataflow* nasze dane są przetwarzane w postaci trójwartościowych krotek typu (<r>value</r>, <g>event-time</g>, <b>window</b>):
 
-(<r>**<książka 1>**</r>, <g>**EVENT 1**</g>, <b>**[1,2)**</b>) oraz (<r>**<książka 2>**</r>, <g>**EVENT 2**</g>, <b>**[2,3)**</b>)
-
-<!-- `(<książka 1>, EVENT 1, [1,2))` oraz `(<książka 2>, EVENT 2, [2,3))` -->
+```js
+[ (książka_1, EVENT 1, [1,2)), (książka_2, EVENT 2, [2,3)) ]
+```
 
 ...a po wczytaniu wyrazów z książek dane w programie będą wyglądać następująco:
-
-```
-[ (<word 1>, EVENT 1, [1,2))...(<word N>, EVENT 1, [1,2)),
-(<word N+1>, EVENT 2, [2,3))...(<word M>, EVENT 2, [2,3)) ]
+```js
+[ ("word 1", EVENT 1, [1,2))...("word N", EVENT 1, [1,2)),
+("word N+1", EVENT 2, [2,3))...("word M", EVENT 2, [2,3)) ]
 ```
 
 Dzięki temu, że rozdzieliliśmy dane na oddzielne porcje z pierwszego oraz drugiego okna czasowego, fragment programu obliczającego częstość odpowiedzialny za grupowanie, wie że grupy mają powstać na podstawie Klucza oraz okna czasowego. Nie wszystkie dane będą dostępne od razu do grupowania. Słowa będą napływać do buforu grupowania i zostaną zgrupowane dopiero, kiedy wszystkie słowa z książki dotrą do bufora. Ale kiedy wiadomo, że wszystkie słowa dotarły do bufora?
