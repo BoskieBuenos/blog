@@ -2,6 +2,7 @@
 title:  "Window i Watermark w Dataflow i Apache Beam"
 date:   2021-03-28 20:00:00 +0200
 categories: dataflow
+hidden: true
 ---
 
 **Apache Beam** jest implementacją modelu przetwarzania danych “**Dataflow**”. Ten model jest usystematyzowanym podejściem do przetwarzania danych. Jest to podejście, które pozwala zbalansować pewne kluczowe aspekty przetwarzania dużych ilości danych, których napływ jest nieograniczony w czasie oraz nie jest wymagane zachowanie żadnego ich porządku. Kluczowe aspekty takiego przetwarzania danych to **dokładność**, **opóźnienie** i **koszt**. Czyli przetwarzając takie dane chcemy otrzymać maksymalnie dokładne wyniki, z jak najmniejszym opóźnieniem od pojawienia się danych oraz jak najmniejszym kosztem obliczeń. Stosunkowo łatwo jest uzyskać dokładne wyniki drastycznie zwiększając koszty lub opóźnienie ich otrzymania. Problemem jest balans. Przetwarzając dane zgodnie z modelem “Dataflow” można go osiągnąć.
